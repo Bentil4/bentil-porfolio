@@ -8,18 +8,27 @@ const inputClass =
 
 export function ContactForm({ endpoint, email }: { endpoint: string; email: string }) {
   const [status, setStatus] = useState<Status>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = e.currentTarget
     setStatus('sending')
+    setErrorMessage('')
     try {
       const res = await fetch(endpoint, {
         method: 'POST',
         body: new FormData(form),
         headers: { Accept: 'application/json' },
       })
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      if (!res.ok) {
+        // Formspree responds with { errors: [{ field?, message }] } on validation failures
+        const data = (await res.json().catch(() => null)) as { errors?: { message: string }[] } | null
+        const message = data?.errors?.map((err) => err.message).join('. ') ?? ''
+        setErrorMessage(message && `${message.charAt(0).toUpperCase()}${message.slice(1)}.`)
+        setStatus('error')
+        return
+      }
       form.reset()
       setStatus('success')
     } catch {
@@ -60,7 +69,7 @@ export function ContactForm({ endpoint, email }: { endpoint: string; email: stri
           {status === 'success' && <span className="text-lime">Thanks! I’ll get back to you soon.</span>}
           {status === 'error' && (
             <span className="text-red-300">
-              Something went wrong.{' '}
+              {errorMessage || 'Something went wrong.'}{' '}
               <a href={`mailto:${email}`} className="underline underline-offset-4 hover:text-ink">
                 Email me directly
               </a>

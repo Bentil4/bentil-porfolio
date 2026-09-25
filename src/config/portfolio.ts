@@ -43,7 +43,7 @@ export const portfolio = {
   },
 
   contact: {
-    formEndpoint: "", // EDIT: e.g. 'https://formspree.io/f/xxxxxxx' — empty = no form
+    formEndpoint: "https://formspree.io/f/mljdwoev", // EDIT: Formspree endpoint — empty = no form
   },
 
   seo: {
