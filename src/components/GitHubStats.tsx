@@ -7,16 +7,19 @@ import { SectionHeading } from './ui/SectionHeading'
 
 const THEME = 'bg_color=12141a&title_color=c6ff3d&icon_color=5b9dff&text_color=eef1f6&hide_border=true'
 
-/** Swap these URLs for a self-hosted github-readme-stats instance if the public one is rate-limited. */
-const liveUrls = (user: string) => ({
-  stats: `https://github-readme-stats.vercel.app/api?username=${user}&show_icons=true&include_all_commits=true&${THEME}`,
-  langs: `https://github-readme-stats.vercel.app/api/top-langs/?username=${user}&layout=donut&langs_count=6&${THEME}`,
-  contributions: `https://ghchart.rshah.org/c6ff3d/${user}`,
-})
+/** Stats and languages come from your self-hosted github-readme-stats instance (`github.statsApiUrl`). */
+const liveUrls = (user: string, statsApi?: string) => {
+  const api = statsApi?.replace(/\/+$/, '')
+  return {
+    stats: api && `${api}/api?username=${user}&show_icons=true&include_all_commits=true&${THEME}`,
+    langs: api && `${api}/api/top-langs/?username=${user}&layout=donut&langs_count=6&${THEME}`,
+    contributions: `https://ghchart.rshah.org/c6ff3d/${user}`,
+  }
+}
 
 export function GitHubStats() {
-  const { username, enableLiveStats } = config.github
-  const urls = enableLiveStats && username ? liveUrls(encodeURIComponent(username)) : null
+  const { username, enableLiveStats, statsApiUrl } = config.github
+  const urls = enableLiveStats && username ? liveUrls(encodeURIComponent(username), statsApiUrl) : null
 
   return (
     <Section id="github" className="border-t border-line">

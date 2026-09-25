@@ -52,8 +52,13 @@ export interface PortfolioConfig {
   }
   github: {
     username?: string
-    /** Swap placeholders for live github-readme-stats images. */
+    /** Swap placeholders for live GitHub images. */
     enableLiveStats: boolean
+    /**
+     * Base URL of your self-hosted github-readme-stats instance,
+     * e.g. 'https://your-stats.vercel.app'. Empty = stats & languages stay placeholders.
+     */
+    statsApiUrl?: string
   }
   contact: {
     /** e.g. a Formspree endpoint. Leave empty to show only direct links. */

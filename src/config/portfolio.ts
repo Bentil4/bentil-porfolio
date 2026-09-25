@@ -39,6 +39,7 @@ export const portfolio = {
   github: {
     username: "Bentil4",
     enableLiveStats: true,
+    statsApiUrl: "https://github-readme-stats-pi-five-48.vercel.app", // EDIT: your self-hosted github-readme-stats URL
   },
 
   contact: {
