@@ -1,5 +1,5 @@
 /* ==========================================================================
- *  ★  PORTFOLIO CONFIG — THE ONLY FILE YOU NEED TO EDIT  ★
+ *  ★  PORTFOLIO CONFIG - THE ONLY FILE YOU NEED TO EDIT  ★
  *
  *  Replace every value marked `// EDIT:` with your own details.
  *  Components read everything from this object, so nothing personal is
@@ -14,7 +14,7 @@ export const portfolio = {
   brand: "bentil.dev",
   title: "Full-Stack Software Engineer",
   summary: [
-    "I turn ambiguous technical problems into fast, reliable products — from typed APIs to pixel-tight interfaces.",
+    "I turn ambiguous technical problems into fast, reliable products - from typed APIs to pixel-tight interfaces.",
     "I ship efficient applications end-to-end, with a bias for measurable performance and clean, maintainable code.",
   ],
 
@@ -43,13 +43,13 @@ export const portfolio = {
   },
 
   contact: {
-    formEndpoint: "https://formspree.io/f/mljdwoev", // EDIT: Formspree endpoint — empty = no form
+    formEndpoint: "https://formspree.io/f/mljdwoev", // EDIT: Formspree endpoint - empty = no form
   },
 
   seo: {
     siteUrl: "https://bentil4.github.io/bentil-porfolio/", // EDIT
     description:
-      "Broderick Nana Bentil — Full-Stack Software Engineer building fast, reliable web applications.",
+      "Broderick Nana Bentil - Full-Stack Software Engineer building fast, reliable web applications.",
     // ogImage: 'https://your-username.github.io/porfolio/og.png',
   },
 

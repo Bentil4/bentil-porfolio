@@ -1,80 +1,80 @@
 /**
  * Type definitions for the portfolio config.
- * You normally don't need to edit this file — edit `portfolio.ts` instead.
+ * You normally don't need to edit this file - edit `portfolio.ts` instead.
  */
 
 export type ProjectCategory =
-  | 'Full-Stack'
-  | 'Frontend'
-  | 'Backend'
-  | 'Open-Source'
-  | 'DevOps'
-  | 'Mobile'
+  | "Full-Stack"
+  | "Frontend"
+  | "Backend"
+  | "Open-Source"
+  | "DevOps"
+  | "Mobile";
 
 export interface Project {
   /** Unique slug, used as the React key and anchor id. */
-  id: string
-  title: string
-  category: ProjectCategory
+  id: string;
+  title: string;
+  category: ProjectCategory;
   /** STAR methodology: what recruiters read to understand impact. */
   star: {
-    situation: string
-    task: string
-    action: string
-    result: string
-  }
-  tech: string[]
+    situation: string;
+    task: string;
+    action: string;
+    result: string;
+  };
+  tech: string[];
   /** Omit to hide the "Live Demo" button. */
-  liveUrl?: string
+  liveUrl?: string;
   /** Omit to hide the "GitHub Repo" button. */
-  repoUrl?: string
+  repoUrl?: string;
   /** Shows a "Private repo" label when there is no public repo link. */
-  repoPrivate?: boolean
+  repoPrivate?: boolean;
 }
 
 export interface PortfolioConfig {
-  name: string
+  name: string;
   /** Short wordmark shown in the navbar. */
-  brand: string
-  title: string
+  brand: string;
+  title: string;
   /** Exactly two sentences for the hero. */
-  summary: [string, string]
+  summary: [string, string];
   about?: {
-    bio: string
-    facts: string[]
-  }
-  email: string
+    bio: string;
+    facts: string[];
+  };
+  email: string;
   /** External link to your resume (Google Drive, Dropbox, etc.). */
-  resumeUrl: string
+  resumeUrl: string;
   socials: {
-    github: string
-    linkedin?: string
-  }
+    github: string;
+    linkedin?: string;
+  };
   github: {
-    username?: string
+    username?: string;
     /** Swap placeholders for live GitHub images. */
-    enableLiveStats: boolean
+    enableLiveStats: boolean;
     /**
      * Base URL of your self-hosted github-readme-stats instance,
      * e.g. 'https://your-stats.vercel.app'. Empty = stats & languages stay placeholders.
      */
-    statsApiUrl?: string
-  }
+    statsApiUrl?: string;
+  };
   contact: {
     /** e.g. a Formspree endpoint. Leave empty to show only direct links. */
-    formEndpoint?: string
-  }
+    formEndpoint?: string;
+  };
   seo: {
     /** Absolute URL where the site is hosted. */
-    siteUrl: string
-    description: string
+    siteUrl: string;
+    description: string;
     /** Absolute URL to a 1200x630 social preview image. */
-    ogImage?: string
-  }
-  projects: Project[]
+    ogImage?: string;
+  };
+  projects: Project[];
   skills: {
-    frontend: string[]
-    backend: string[]
-    devops: string[]
-  }
+    frontend: string[];
+    backend: string[];
+    devops: string[];
+  };
 }

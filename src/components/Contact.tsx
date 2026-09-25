@@ -22,7 +22,7 @@ export function Contact() {
               id="contact-heading"
               eyebrow="contact"
               title="Let’s build something."
-              description="Hiring, collaborating, or just want to talk shop? My inbox is open — I usually reply within a day."
+              description="Hiring, collaborating, or just want to talk shop? My inbox is open - I usually reply within a day."
             />
           </Reveal>
           <Reveal delay={0.08}>
