@@ -39,9 +39,16 @@ npm run lint
 
 ## GitHub stats
 
-The stats section shows styled placeholders by default. To show live data, set `github.username` and `github.enableLiveStats: true`. The panels then load images from [github-readme-stats](https://github.com/anuraghazra/github-readme-stats) and [ghchart](https://ghchart.rshah.org).
+The stats section shows styled placeholders until `github.enableLiveStats` is `true` and `github.username` is set.
 
-The public stats instance is sometimes rate-limited. If an image fails to load, its panel falls back to the placeholder. For reliable stats, deploy your own instance and update the URLs in `src/components/GitHubStats.tsx`.
+- **Contribution graph:** loaded from [ghchart](https://ghchart.rshah.org). No setup needed.
+- **Stats and Top Languages:** loaded from a self-hosted [github-readme-stats](https://github.com/anuraghazra/github-readme-stats) instance, set in `github.statsApiUrl`. The public instance has been shut down, so you need your own:
+  1. Fork github-readme-stats and import it into Vercel.
+  2. Add the environment variable `PAT_1`: a classic GitHub token with no scopes is enough for public stats.
+  3. Add `WHITELIST=<your-username>` so nobody else can use up your token's API quota.
+  4. Deploy, then put the production URL in `statsApiUrl`.
+
+If an image fails to load, its panel falls back to the placeholder.
 
 ## Structure
 
